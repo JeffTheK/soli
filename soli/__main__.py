@@ -17,13 +17,16 @@ def get_icon(file_name):
 
 @click.command()
 @click.option('-v/-h', '--vertical/--horizontal', default=False,)
-def main(vertical):
+@click.option('-ni', '--no-icons', is_flag=True, default=False)
+def main(vertical, no_icons):
     style = "horizontal"
     if vertical:
         style = "vertical"
     stuff = os.listdir()
     for s in stuff:
-        icon = get_icon(s)
+        icon = ""
+        if not no_icons:
+            icon = get_icon(s)
         end = ""
         if style == "horizontal":
             end = " "
