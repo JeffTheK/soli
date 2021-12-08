@@ -27,9 +27,12 @@ def turn_off_color():
     Fore = DummyFore
 
 @click.command()
-@click.option('-v/-h', '--vertical/--horizontal', default=False,)
-@click.option('-ni', '--no-icons', is_flag=True, default=False)
-@click.option('-nc', '--no-color', is_flag=True, default=False)
+@click.option('-v/-h', '--vertical/--horizontal', default=False,
+help="show in vertical or horizontal style")
+@click.option('-ni', '--no-icons', is_flag=True, default=False,
+help="turn off icons")
+@click.option('-nc', '--no-color', is_flag=True, default=False,
+help="turn off color")
 def main(vertical, no_icons, no_color):
     colorama.init()
 
