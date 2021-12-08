@@ -23,7 +23,9 @@ def main(vertical, no_icons):
     style = "horizontal"
     if vertical:
         style = "vertical"
+
     stuff = os.listdir()
+    stuff.sort(key=lambda s: os.path.isdir(s))
     for s in stuff:
         icon = ""
         if not no_icons:
