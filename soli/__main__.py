@@ -1,2 +1,6 @@
+import os
+
 def main():
-    print("hello world")
+    stuff = os.listdir()
+    for s in stuff:
+        print(s)
