@@ -1,6 +1,7 @@
 import os
 import click
 from colorama import Fore, Back, Style
+from datetime import datetime
 
 def get_icon(file_name):
     if os.path.isdir(file_name):
@@ -55,6 +56,11 @@ def main(vertical, no_icons, no_color):
             else:
                 size = Fore.LIGHTBLACK_EX + "- ".rjust(4) + Fore.RESET
 
+        time = ""
+        if vertical:
+            seconds = os.stat(s).st_ctime
+            time = datetime.fromtimestamp(seconds).strftime("%B %d %I:%M:%S ")
+
         if os.path.isdir(s):
             s = f"{Fore.BLUE}{s}{Fore.RESET}"
-        print(f"{size}{icon} {s}", end=end)
+        print(f"{size}{time}{icon} {s}", end=end)
