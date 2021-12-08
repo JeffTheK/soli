@@ -62,7 +62,7 @@ def main(vertical, no_icons, no_color):
         time = ""
         if vertical:
             seconds = os.stat(s).st_ctime
-            time = datetime.fromtimestamp(seconds).strftime("%B %d %I:%M:%S ")
+            time = datetime.fromtimestamp(seconds).strftime("%d %b %I:%M ")
             time = Fore.BLUE + time + Fore.RESET
 
         if os.path.isdir(s):
