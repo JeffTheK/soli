@@ -1,4 +1,5 @@
 import os
+import click
 
 def get_icon(file_name):
     if os.path.isdir(file_name):
@@ -14,8 +15,12 @@ def get_icon(file_name):
     else:
         return "🗋"
 
-def main():
+@click.command()
+@click.option('-v/-h', '--vertical/--horizontal', default=False,)
+def main(vertical):
     style = "horizontal"
+    if vertical:
+        style = "vertical"
     stuff = os.listdir()
     for s in stuff:
         icon = get_icon(s)
