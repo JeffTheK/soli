@@ -1,6 +1,7 @@
 import os
 import click
 import colorama
+import pwd
 from colorama import Fore, Back, Style
 from datetime import datetime
 
@@ -59,6 +60,12 @@ def main(vertical, no_icons, no_color):
             else:
                 size = Fore.LIGHTBLACK_EX + "-".rjust(4) + " " + Fore.RESET
 
+        user = ""
+        if vertical:
+            uid = os.stat(s).st_uid
+            name = pwd.getpwuid(uid).pw_name
+            user = Fore.YELLOW + name + Fore.RESET + " "
+
         time = ""
         if vertical:
             seconds = os.stat(s).st_ctime
@@ -67,4 +74,4 @@ def main(vertical, no_icons, no_color):
 
         if os.path.isdir(s):
             s = f"{Style.BRIGHT}{Fore.LIGHTBLUE_EX}{s}{Fore.RESET}{Style.RESET_ALL}"
-        print(f"{size}{time}{icon} {s}", end=end)
+        print(f"{size}{user}{time}{icon} {s}", end=end)
