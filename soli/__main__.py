@@ -15,7 +15,13 @@ def get_icon(file_name):
         return "🗋"
 
 def main():
+    style = "horizontal"
     stuff = os.listdir()
     for s in stuff:
         icon = get_icon(s)
-        print(f"{icon} {s}")
+        end = ""
+        if style == "horizontal":
+            end = " "
+        else:
+            end = "\n"
+        print(f"{icon} {s}", end=end)
