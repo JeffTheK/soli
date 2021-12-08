@@ -4,7 +4,7 @@ from colorama import Fore, Back, Style
 
 def get_icon(file_name):
     if os.path.isdir(file_name):
-        return "🗁"
+        return "🗁 "
     elif file_name.endswith(".gitignore"):
         return ""
     elif file_name.endswith(".py"):
@@ -14,7 +14,7 @@ def get_icon(file_name):
     elif file_name.endswith(".txt"):
         return ""
     else:
-        return "🗋"
+        return "🗋 "
 
 @click.command()
 @click.option('-v/-h', '--vertical/--horizontal', default=False,)
