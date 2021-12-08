@@ -33,7 +33,9 @@ help="show in vertical or horizontal style")
 help="turn off icons")
 @click.option('-nc', '--no-color', is_flag=True, default=False,
 help="turn off color")
-def main(vertical, no_icons, no_color):
+@click.option('-r', '--reverse', is_flag=True, default=False,
+help="reverse the sort order")
+def main(vertical, no_icons, no_color, reverse):
     colorama.init()
 
     style = "horizontal"
@@ -45,6 +47,8 @@ def main(vertical, no_icons, no_color):
 
     stuff = os.listdir()
     stuff.sort(key=lambda s: os.path.isdir(s))
+    if reverse:
+        stuff.reverse()
     for s in stuff:
         icon = ""
         if not no_icons:
