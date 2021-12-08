@@ -16,6 +16,13 @@ def get_icon(file_name):
     else:
         return "🗋 "
 
+def turn_off_color():
+    class DummyFore:
+        BLACK=RED=GREEN=YELLOW=BLUE=MAGENTA=CYAN=WHITE=RESET=''
+        LIGHTBLACK_EX=''
+    global Fore
+    Fore = DummyFore
+
 @click.command()
 @click.option('-v/-h', '--vertical/--horizontal', default=False,)
 @click.option('-ni', '--no-icons', is_flag=True, default=False)
@@ -24,6 +31,9 @@ def main(vertical, no_icons, no_color):
     style = "horizontal"
     if vertical:
         style = "vertical"
+    
+    if no_color:
+        turn_off_color()
 
     stuff = os.listdir()
     stuff.sort(key=lambda s: os.path.isdir(s))
@@ -45,6 +55,6 @@ def main(vertical, no_icons, no_color):
             else:
                 size = Fore.LIGHTBLACK_EX + "- ".rjust(4) + Fore.RESET
 
-        if os.path.isdir(s) and not no_color:
+        if os.path.isdir(s):
             s = f"{Fore.BLUE}{s}{Fore.RESET}"
         print(f"{size}{icon} {s}", end=end)
