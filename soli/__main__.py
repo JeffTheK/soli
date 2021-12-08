@@ -54,7 +54,7 @@ def main(vertical, no_icons, no_color):
             if os.path.isfile(s):
                 size = Fore.GREEN + str(os.stat(s).st_size).ljust(4) + " " + Fore.RESET
             else:
-                size = Fore.LIGHTBLACK_EX + "- ".rjust(4) + Fore.RESET
+                size = Fore.LIGHTBLACK_EX + "-".rjust(4) + " " + Fore.RESET
 
         time = ""
         if vertical:
