@@ -1,5 +1,6 @@
 import os
 import click
+import colorama
 from colorama import Fore, Back, Style
 from datetime import datetime
 
@@ -20,7 +21,7 @@ def get_icon(file_name):
 def turn_off_color():
     class DummyFore:
         BLACK=RED=GREEN=YELLOW=BLUE=MAGENTA=CYAN=WHITE=RESET=''
-        LIGHTBLACK_EX=''
+        LIGHTBLACK_EX=LIGHTBLUE_EX=''
     global Fore
     Fore = DummyFore
 
@@ -29,6 +30,8 @@ def turn_off_color():
 @click.option('-ni', '--no-icons', is_flag=True, default=False)
 @click.option('-nc', '--no-color', is_flag=True, default=False)
 def main(vertical, no_icons, no_color):
+    colorama.init()
+
     style = "horizontal"
     if vertical:
         style = "vertical"
@@ -60,7 +63,8 @@ def main(vertical, no_icons, no_color):
         if vertical:
             seconds = os.stat(s).st_ctime
             time = datetime.fromtimestamp(seconds).strftime("%B %d %I:%M:%S ")
+            time = Fore.BLUE + time + Fore.RESET
 
         if os.path.isdir(s):
-            s = f"{Fore.BLUE}{s}{Fore.RESET}"
+            s = f"{Style.BRIGHT}{Fore.LIGHTBLUE_EX}{s}{Fore.RESET}{Style.RESET_ALL}"
         print(f"{size}{time}{icon} {s}", end=end)
