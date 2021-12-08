@@ -38,6 +38,13 @@ def main(vertical, no_icons, no_color):
         else:
             end = "\n"
 
+        size = ""
+        if vertical:
+            if os.path.isfile(s):
+                size = Fore.GREEN + str(os.stat(s).st_size).ljust(4) + " " + Fore.RESET
+            else:
+                size = Fore.LIGHTBLACK_EX + "- ".rjust(4) + Fore.RESET
+
         if os.path.isdir(s) and not no_color:
             s = f"{Fore.BLUE}{s}{Fore.RESET}"
-        print(f"{icon} {s}", end=end)
+        print(f"{size}{icon} {s}", end=end)
