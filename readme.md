@@ -1,6 +1,6 @@
 # soli
 
-Simple terminal soli game
+My implementation of ls
 
 ## Installation
 

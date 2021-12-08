@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     name = "soli",
     version = "1.0.0",
-    description = "Simple terminal soli game",
+    description = "ls clone",
     author = "JeffTheK",
     url = "https://github.com/JeffTheK/soli",
     packages = ["soli"],
