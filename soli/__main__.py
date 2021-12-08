@@ -19,7 +19,8 @@ def get_icon(file_name):
 @click.command()
 @click.option('-v/-h', '--vertical/--horizontal', default=False,)
 @click.option('-ni', '--no-icons', is_flag=True, default=False)
-def main(vertical, no_icons):
+@click.option('-nc', '--no-color', is_flag=True, default=False)
+def main(vertical, no_icons, no_color):
     style = "horizontal"
     if vertical:
         style = "vertical"
@@ -37,6 +38,6 @@ def main(vertical, no_icons):
         else:
             end = "\n"
 
-        if os.path.isdir(s):
+        if os.path.isdir(s) and not no_color:
             s = f"{Fore.BLUE}{s}{Fore.RESET}"
         print(f"{icon} {s}", end=end)
