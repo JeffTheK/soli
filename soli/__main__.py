@@ -1,5 +1,6 @@
 import os
 import click
+from colorama import Fore, Back, Style
 
 def get_icon(file_name):
     if os.path.isdir(file_name):
@@ -27,9 +28,13 @@ def main(vertical, no_icons):
         icon = ""
         if not no_icons:
             icon = get_icon(s)
+
         end = ""
         if style == "horizontal":
             end = " "
         else:
             end = "\n"
+
+        if os.path.isdir(s):
+            s = f"{Fore.BLUE}{s}{Fore.RESET}"
         print(f"{icon} {s}", end=end)
