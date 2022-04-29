@@ -7,17 +7,17 @@ from datetime import datetime
 
 def get_icon(file_name):
     if os.path.isdir(file_name):
-        return "🗁 "
+        return "~"
     elif file_name.endswith(".gitignore"):
-        return ""
+        return "~"
     elif file_name.endswith(".py"):
-        return ""
+        return "~"
     elif file_name.endswith(".md"):
-        return ""
+        return "~"
     elif file_name.endswith(".txt"):
-        return ""
+        return "~"
     else:
-        return "🗋 "
+        return "~"
 
 def turn_off_color():
     class DummyFore:
@@ -81,4 +81,4 @@ def main(vertical, no_icons, no_color, reverse):
 
         if os.path.isdir(s):
             s = f"{Style.BRIGHT}{Fore.LIGHTBLUE_EX}{s}{Fore.RESET}{Style.RESET_ALL}"
-        print(f"{size}{user}{time}{icon} {s}", end=end)
+        print(f"{size}{user}{time}{icon} {s}", end="\n")
